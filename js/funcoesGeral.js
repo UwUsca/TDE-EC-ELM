@@ -15,6 +15,34 @@ $(document).ready(function(){
         window.location.href="paginas/login.html"
     })
 
+
+    $("bRegistrar").click(function () {
+
+        var sha256 = sjcl.hash.sha256.hash($('#campoSenha2').val());
+        var sha256_hexa = sjcl.codec.hex.fromBits(sha256);
+
+        $("#campoSenha2").val(sha256_hexa);
+
+        fLocalComunicaServidor('form-cadastro-usuario', 'cadastro_usuario');
+
+        return false;
+    });
+    $("bRegistrar").click(function () {
+
+
+        fLocalComunicaServidor('form-cadastro-filmes', 'cadastroFilmes');
+
+        return false;
+    });
+    $("bRegistrar").click(function () {
+
+
+        fLocalComunicaServidor('form-cadastro-series', 'cadastroSeries');
+
+        return false;
+    });
+
+
     fConfirmaçãoCadastro();
 
 })
@@ -79,5 +107,64 @@ function validaSenha(){
             cadastroInvalido = true;
         }
     }
+
+}
+
+function fLocalComunicaServidor(formulario, arquivo) {
+
+    var dados = $("#" + formulario).serialize();
+
+    $.ajax({
+
+        type: "POST",
+        dataType: "json",
+        url: "TDE-EC-ELM/php/" + arquivo + ".php",
+        data: dados,
+        success: function (retorno) {
+
+            if (retorno.funcao == "cadastroUsuario") {
+
+                if (retorno.status == "s") {
+                    alert(retorno.mensagem);
+                    window.location.href = "../../index.html";
+                } else {
+                    alert(retorno.mensagem);
+                }
+
+            }
+
+            if (retorno.funcao == "cadastroFilmes") {
+
+                if (retorno.status == "s") {
+                    alert(retorno.mensagem);
+                    window.location.href = "../../index.html";
+                } else {
+                    alert(retorno.mensagem);
+                }
+
+            }
+
+            if (retorno.funcao == "cadastroSeries") {
+
+                if (retorno.status == "s") {
+                    alert(retorno.mensagem);
+                    window.location.href = "../../index.html";
+                } else {
+                    alert(retorno.mensagem);
+                }
+
+            }
+
+            if(retorno.funcao == "login"){            
+                if(retorno.status == "s"){
+                    alert(retorno.mensagem);
+                    window.location.href = "../../paginas/login.html";
+                } else {
+                    alert(retorno.mensagem);
+                }
+            }
+        }
+
+    });
 
 }
