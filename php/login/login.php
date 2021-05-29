@@ -5,8 +5,11 @@ session_start();
 include_once ("../config/conexao.php");
 
 // recebe dados do formulário
-$senha = filter_input(INPUT_POST, 'senha');
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+//$senha = filter_input(INPUT_POST, 'senha');
+//$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+
+$email = $_POST["email"];
+$senha = $_POST["senha"];
 
 // echo "Nome: $nome <br>";
 // echo "E-mail: $email <br>";
@@ -14,6 +17,8 @@ $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $result_usuario = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha' ";
 
 $resultado_usuario = mysqli_query($conn, $result_usuario);
+
+$resultado_row = mysqli_num_rows($resultado_usuario);
 
 $retorno["status"] = "n";
 $retorno["funcao"] = "login";
@@ -31,6 +36,12 @@ if(mysqli_num_rows($resultado_usuario) > 0){
     $retorno["status"] = "s";
     $retorno["mensagem"] = "usuario cadastrado";
 
+}
+
+if($resultado_row == false){
+    echo json_encode("n");
+}else{
+    echo json_encode("s");
 }
 
 print_r($_SESSION);
