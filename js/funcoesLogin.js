@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
-    $("buttonLOGIN").click(function () {
+    $("#buttonLOG").click(function () {
 
-        var sha256 = sjcl.hash.sha256.hash($('#senha').val());
-        var sha256_hexa = sjcl.codec.hex.fromBits(sha256);
+        fConfirmacaoLogin();
 
-        $("#senha").val(sha256_hexa);
-
-        if(fConfirmacaoLogin != false){
+        if(verificarInputsLogin() == true){
+            sha256();
             fLocalComunicaServidorLogin();
+        }else{
+            alert("erro :(");
         }
         
 
@@ -16,6 +16,13 @@ $(document).ready(function(){
 
 
 })
+
+function sha256(){
+    var sha256 = sjcl.hash.sha256.hash($('#senha').val());
+    var sha256_hexa = sjcl.codec.hex.fromBits(sha256);
+
+    return sha256_hexa;
+}
 
 function fConfirmacaoLogin(){
     var email = $("#email").val();
@@ -38,9 +45,19 @@ function fConfirmacaoLogin(){
     }
 }
 
+function verificarInputsLogin(){
+    var email = $("#email").val();
+    var senha = $("#senha").val();
+
+    if(email=="" || senha ==""){
+       return false;
+   }
+   return true;
+}
+
 
 function fLocalComunicaServidorLogin() {
-
+    var senha = sha256();
     
 
     $.ajax({
@@ -50,19 +67,20 @@ function fLocalComunicaServidorLogin() {
         url: "../php/login/login.php",
         data:{ 
             email: $("#email").val(),
-            senha: $("#senha").val(),
+            senha: senha.toString(),
     },
 
         success: function (retorno) {
 
+            if(retorno.funcao == "login"){
+                if (retorno.status == "s") {
+                    alert(retorno.mensagem);
+                    window.location.href = "../../index.html";
+                } else {
+                    alert("usuario nao cadastrado D:");
+                }
 
-            if (retorno.status == "s") {
-                alert(retorno.mensagem);
-                window.location.href = "../../index.html";
-            } else {
-                alert(retorno.mensagem);
             }
-
             
         }
     });

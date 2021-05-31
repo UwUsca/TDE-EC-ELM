@@ -3,11 +3,12 @@
     date_default_timezone_get();
 
     $email = $_POST["email"];
+    $token = $_POST["token"];
 
     require '../PHPMailer/PHPMailerAutoload.php';
 
-    $tituloEmail = "confirme seu cadastro";
-    $message = "seu token é: ";
+    $tituloEmail = "Confirme seu cadastro na NetZon";
+    $message = "O seu token é: $token";
 
     $mail = new PHPMailer;
     $mail->isSMTP();

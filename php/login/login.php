@@ -14,7 +14,7 @@ $senha = $_POST["senha"];
 // echo "Nome: $nome <br>";
 // echo "E-mail: $email <br>";
 
-$result_usuario = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha' ";
+$result_usuario = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'  and validacao = 's'";
 
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 
@@ -44,6 +44,6 @@ if($resultado_row == false){
     echo json_encode("s");
 }
 
-print_r($_SESSION);
+//print_r($_SESSION);
 
-echo json_encode($retorno);
+//echo json_encode($retorno);
