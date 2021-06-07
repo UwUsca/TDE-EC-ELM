@@ -1,37 +1,21 @@
 <?php
 
-session_start();
-
 include_once("../config/conexao.php");
 
-$entrar = filter_input(INPUT_POST, 'bRecuperar', FILTER_SANITIZE_STRING);
+$email = $_POST["email"];
+$token_red = $_POST["token_red"];
 
-if ($entrar) {
-    
-    $emailRecuparar = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$resultado_red = mysqli_query($conn, "SELECT * FROM usuario WHERE email = '$email'");
 
-    if((!empty($emailRecuparar)) AND (!empty($emailRecuparar))){
-        
-        // LIMIT pega o usuário no banco de dados
-        $result_usuario = "SELECT * FROM usuarios WHERE email='$emailRecuparar' LIMIT 1";
-        $resultado_usuario = mysqli_query($conn, $result_usuario);
+$resultado_red_row = mysqli_num_rows($resultado_red);
 
-        if($resultado_usuario){
-            
-            $row_usuario = mysqli_fetch_array($resultado_usuario);
-
-            if($emailRecuparar == $row_usuario['email']){
-     
-                $_SESSION['email'] = $row_usuario['email'];
-                if($row_usuario['email'] == 1){
-                    header("Location: ");
-                } else {
-                    header("Location: ");
-                }
-                exit;
-            }
-        }
-    }
+if($resultado_red_row == false){
+    echo json_encode('n');
+}else{
+    mysqli_query($conn, "UPDATE usuario SET token_red = '$token_red' WHERE email = '$email'");
+    echo json_encode('s');
 }
+
+mysqli_close($conn);
 
 ?>

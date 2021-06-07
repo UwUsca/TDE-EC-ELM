@@ -68,20 +68,17 @@ function fLocalComunicaServidorLogin() {
         data:{ 
             email: $("#email").val(),
             senha: senha.toString(),
-    },
+        },
 
         success: function (retorno) {
 
-            if(retorno.funcao == "login"){
-                if (retorno.status == "s") {
-                    alert(retorno.mensagem);
-                    window.location.href = "../../index.html";
-                } else {
-                    alert("usuario nao cadastrado D:");
-                }
-
+            if(retorno == "s"){
+                window.location.href = '../paginas/telaFilmes.html';
+            } else if(retorno == "n") {
+                alert("usuario nao cadastrado D:");
             }
-            
+
         }
+            
     });
 }

@@ -2,48 +2,40 @@
 
 session_start();
 
-include_once ("../config/conexao.php");
-
-// recebe dados do formulário
-//$senha = filter_input(INPUT_POST, 'senha');
-//$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$conexao = mysqli_connect("localhost", "root", "", "banco_ec_proj");
 
 $email = $_POST["email"];
 $senha = $_POST["senha"];
 
-// echo "Nome: $nome <br>";
-// echo "E-mail: $email <br>";
+$resultado = mysqli_query($conexao, "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'  and validacao = 's'");
 
-$result_usuario = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'  and validacao = 's'";
-
-$resultado_usuario = mysqli_query($conn, $result_usuario);
-
-$resultado_row = mysqli_num_rows($resultado_usuario);
+$resultadoRow = mysqli_num_rows($resultado);
 
 $retorno["status"] = "n";
 $retorno["funcao"] = "login";
 $retorno["mensagem"] = "usuario não cadastrado";
 
-if(mysqli_num_rows($resultado_usuario) > 0){
+if(mysqli_num_rows($resultado) > 0){
     
-    $registro = mysqli_fetch_assoc($resultado_usuario);
+    $registro = mysqli_fetch_assoc($resultado);
 
     $_SESSION["email"] = $registro["email"];
     $_SESSION["inicio"] = time();
     $_SESSION["tempolimite"] = 15;
     $_SESSION["id"] = session_id();
+    $_SESSION["idUsuario"] = $registro["id"];
 
     $retorno["status"] = "s";
     $retorno["mensagem"] = "usuario cadastrado";
 
 }
 
-if($resultado_row == false){
+if($resultadoRow == false){
     echo json_encode("n");
 }else{
     echo json_encode("s");
 }
 
-//print_r($_SESSION);
+mysqli_close($conexao);
 
-//echo json_encode($retorno);
+?>

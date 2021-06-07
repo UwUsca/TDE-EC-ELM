@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../css/cssGeral.css">
     <!-- JS -->
     <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../js/funcoesCadastro.js"></script>
+    <script type="text/javascript" src="../js/funcoesTrocaSenha.js"></script>
     <script src="https://kit.fontawesome.com/24a028cc87.js" crossorigin="anonymous"></script>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="../js/sjcl.js"></script>
@@ -27,19 +27,19 @@
         <br>
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input  class="mdl-textfield__input" style="color: white;"><br>
-                <label class="mdl-textfield__label" style="color: white;">Senha Atual</label>
+                <input id="inputSenha" class="mdl-textfield__input" style="color: white;"><br>
+                <label id="labelSenha" class="mdl-textfield__label" style="color: white;">Nova Senha</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input  class="mdl-textfield__input" style="color: white;"><br>
-                <label class="mdl-textfield__label" style="color: white;">Nova Senha</label>
+                <input id="inputSenhaConf" class="mdl-textfield__input" style="color: white;"><br>
+                <label id="labelSenhaConf" class="mdl-textfield__label" style="color: white;">Confirma Nova Senha</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input  class="mdl-textfield__input" style="color: white;"><br>
-                <label class="mdl-textfield__label" style="color: white;">Token</label>
+                <input id="inputTokenSenha" class="mdl-textfield__input" style="color: white;"><br>
+                <label id="labelTokenSenha" class="mdl-textfield__label" style="color: white;">Token</label>
             </div>
             <br>
-            <button> Confirmar </button>
+            <button id="bCriaSenha" class="buttonLogin"> Confirmar </button>
         </div>
         
     </body>

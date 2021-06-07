@@ -3,11 +3,11 @@
     date_default_timezone_get();
 
     $email = $_POST["email"];
-    $token = $_POST["token"];
+    $token_red = $_POST["token_red"];
 
     require '../PHPMailer/PHPMailerAutoload.php';
 
-    $tituloEmail = "Confirme seu cadastro na NetZon";
+    $tituloEmail = "Redefina sua senha na NetZon";
     $message = "<!DOCTYPE html>
     <html lang='pt'>
     <head></head>
@@ -15,9 +15,9 @@
         <div id='email' value ='$email' hidden>
         </div>
         <div>
-            <a> Seu token é: $token </a>
+            <a> Seu token é: $token_red </a>
         </div>
-        <a> Continue seu cadastro clicando <a href='http://localhost/git/TDE-EC-ELM/paginas/confCadastro.html'>aqui</a>.</a>
+        <a> Redefina sua senha clicando <a href='http://localhost/git/TDE-EC-ELM/paginas/trocaSenha.html'>aqui</a>.</a>
     </body>
     </html>";
 

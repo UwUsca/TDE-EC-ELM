@@ -40,6 +40,10 @@ if(isset($_SESSION['id']) == false){
     }
 }
 
-echo json_encode($retorno);
+if($retorno["status"]=="n"){
+    echo json_encode("n");
+}else{
+    echo json_encode("s");
+}
 
 ?>
