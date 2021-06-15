@@ -10,9 +10,7 @@
         <link rel="stylesheet" type="text/css" href="../css/cssGeral.css">
         <!-- JS -->
         <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="../js/funcoesCadastro.js"></script>
-        <script type="text/javascript" src="../js/funcoesRecuperaSenha.js"></script>
-        <script type="text/javascript" src="../js/funcoesGeral.js"></script>
+        <script type="text/javascript" src="../js/funcoesTrocaCartao.js"></script>
         <script src="https://kit.fontawesome.com/24a028cc87.js" crossorigin="anonymous"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script src="../js/sjcl.js"></script>
@@ -45,30 +43,35 @@
                         <p class="pTexto"> Troca de Cartão</p>
                         <br>
                         <div>
+
+                            <div id="div-email" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input id="inputEmailC" class="mdl-textfield__input" type="text" style="color: white;"><br>
+                                <label id="labelEmailC" class="mdl-textfield__label" style="color: white;">Email</label>
+                            </div> 
                             <p class="pJaTemConta">Insira as novas informações do cartão</p> 
 
                             <div id="div-email" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="" class="mdl-textfield__input" type="text" style="color: white;"><br>
-                                <label id="" class="mdl-textfield__label" style="color: white;">Numero Cartão</label>
+                                <input id="inputNumC" class="mdl-textfield__input" type="text" style="color: white;"><br>
+                                <label id="labelNumC" class="mdl-textfield__label" style="color: white;">Numero Cartão</label>
                             </div>      
                             <div id="div-email" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="" class="mdl-textfield__input" type="text" style="color: white;"><br>
-                                <label id="" class="mdl-textfield__label" style="color: white;">Validade</label>
+                                <input id="inputValC" class="mdl-textfield__input" type="text" style="color: white;"><br>
+                                <label id="labelValC" class="mdl-textfield__label" style="color: white;">Validade</label>
                             </div>   
                             <div id="div-email" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="" class="mdl-textfield__input" type="text" style="color: white;"><br>
-                                <label id="" class="mdl-textfield__label" style="color: white;">CVV</label>
+                                <input id="inputCvvC" class="mdl-textfield__input" type="text" style="color: white;"><br>
+                                <label id="labelCvvC" class="mdl-textfield__label" style="color: white;">CVV</label>
                             </div>     
                             <div id="div-email" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="" class="mdl-textfield__input" type="text" style="color: white;"><br>
-                                <label id="" class="mdl-textfield__label" style="color: white;">Titular</label>
+                                <input id="inputTitularC" class="mdl-textfield__input" type="text" style="color: white;"><br>
+                                <label id="labelTitularC" class="mdl-textfield__label" style="color: white;">Titular</label>
                             </div>   
                             <div id="div-email" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="" class="mdl-textfield__input" type="text" style="color: white;"><br>
-                                <label id="" class="mdl-textfield__label" style="color: white;">CPF/CNPJ</label>
+                                <input id="inputCpfC" class="mdl-textfield__input" type="text" style="color: white;"><br>
+                                <label id="labelCpfC" class="mdl-textfield__label" style="color: white;">CPF/CNPJ</label>
                             </div>   
                             <br>
-                            <button id="" class='buttonLogin'>Confirmar</button>                    
+                            <button id="confirma" class='buttonLogin'>Confirmar</button>                    
                         </div>
                     </div>
                 </div>
