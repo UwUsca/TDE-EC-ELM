@@ -26,6 +26,7 @@ footer{
 }
 
 
+
 /* ID */
 
 #idCabeçalho{
@@ -71,6 +72,13 @@ footer{
     border-radius: 15px;
     width: 400px;
 }
+#fundoFilmes{
+    width: 100%;
+    height: 100%;
+    background: #140626 ;
+}
+
+
 
 /* CLASSES */
 .imgIcone{
