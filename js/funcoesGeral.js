@@ -15,4 +15,7 @@ $(document).ready(function(){
         window.location.href="paginas/login.html"
     })
 
+    $('.cardFilme').hover(function(){
+        $('.capaFilme').toggleClass(".descricao")})
+
 })
